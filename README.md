@@ -332,4 +332,14 @@ For issues and questions:
 
 ---
 
+## 📸 Application Screenshots
+
+### Welcome Screen
+![Welcome Screen](screenshots/A.png)
+
+### Chat Interface
+![Chat Interface](screenshots/B.png)
+
+---
+
 *AgriConnect AI - Making agricultural knowledge accessible to everyone* 🌾

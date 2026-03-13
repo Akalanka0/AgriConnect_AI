@@ -288,4 +288,14 @@ npm run preview
 
 ---
 
+## 📸 Application Screenshots
+
+### Welcome Screen
+![Welcome Screen](../screenshots/A.png)
+
+### Chat Interface  
+![Chat Interface](../screenshots/B.png)
+
+---
+
 *This tech stack is optimized for performance, maintainability, and scalability in agricultural AI applications.*
