@@ -1,14 +1,19 @@
 import os
-from sentence_transformers import SentenceTransformer
-import chromadb
 
-# Paths
-chunk_folder = "../data/chunks"
-db_path = "./chroma_db"  # Folder where persistent DB will be saved
+import chromadb
+from sentence_transformers import SentenceTransformer
+
+# Paths - using absolute paths for consistency
+chunk_folder = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "data", "chunks")
+)
+db_path = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "chroma_db")
+)  # Folder where persistent DB will be saved
 
 # Load embedding model
 print("Loading embedding model...")
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # Initialize persistent Chroma client
 print("Initializing ChromaDB...")
@@ -31,7 +36,7 @@ for filename in os.listdir(chunk_folder):
         file_path = os.path.join(chunk_folder, filename)
         with open(file_path, "r", encoding="utf-8") as f:
             text = f.read()
-        
+
         # Skip empty files
         if not text.strip():
             print(f"Skipping empty file: {filename}")
@@ -49,11 +54,8 @@ for filename in os.listdir(chunk_folder):
 
 # Add all chunks to ChromaDB in one batch
 if ids:
-    collection.add(
-        documents=documents,
-        metadatas=metadatas,
-        embeddings=embeddings,
-        ids=ids
+    collection.upsert(
+        documents=documents, metadatas=metadatas, embeddings=embeddings, ids=ids
     )
     print(f"\n✅ Successfully stored {len(ids)} chunks in ChromaDB!")
     print(f"📁 Database saved to: {os.path.abspath(db_path)}")

@@ -2,8 +2,8 @@ import os
 from pypdf import PdfReader
 
 # Step 1: Path to the data folder
-# Using absolute path logic is often safer in complex projects
-data_folder = os.path.join(os.path.dirname(__file__), "../data")
+# Using absolute path for consistency
+data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data"))
 
 # Step 2: Iterate over all PDF files
 documents = []

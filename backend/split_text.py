@@ -3,8 +3,8 @@ import os
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # 1. Path Configuration
-# Moves up one level from 'backend' to find 'data'
-data_folder = "../data"
+# Using absolute paths for consistency
+data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data"))
 chunk_folder = os.path.join(data_folder, "chunks")
 
 # 2. Create the output directory if it doesn't exist
